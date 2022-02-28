@@ -42,12 +42,12 @@ const displayPhone = phones => {
     });
 }
  
-// const detalic = ()=> {
-//     fetch(' https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
-//     .then(res => res.json())
-//     .then(data=>displayInfro(data))
-// }
+const detalic = ()=> {
+    fetch(' https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
+    .then(res => res.json())
+    .then(data=>displayInfro(data))
+}
    
-// const displayInfro = infroData => {
-//     console.log(infroData)
-// }
+const displayInfro = infroData => {
+    console.log(infroData)
+}
