@@ -45,9 +45,23 @@ const displayPhone = phones => {
 const detalic = ()=> {
     fetch(' https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
     .then(res => res.json())
-    .then(data=>displayInfro(data))
+    .then(data=>displayInfro(data.data))
 }
    
 const displayInfro = infroData => {
-    console.log(infroData)
+    const phoneDatlic = document.getElementById('phone-datlice')
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="card text-center">
+    <div>
+        <img class="mt-3 w-50" src="${infroData.image}" alt="">
+    </div>
+       <h2>Name:</h2>
+       <h2>Brand Name:</h2>
+   <div>
+      <button class="btn btn-success mb-4">All Data</button>
+    </div>
+</div>
+    `
+    phoneDatlic.appendChild(div)
 }
