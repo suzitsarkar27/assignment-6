@@ -16,7 +16,7 @@ const phoneEvent = () => {
             .then(data => displayPhone(data.data))
         input.value = '';
      }
-      
+   
 }
 
 const displayPhone = phones => {
@@ -24,7 +24,7 @@ const displayPhone = phones => {
     phones.forEach(element => {
         // console.log(element.phone_name)
         const div = document.createElement('div');
-        div.className=('col-col-md-6 col-lg-4 mb-3 p-5 ')
+        div.className=('col-col-md-6 col-lg-4 mb-3 p-5 m-auto')
         div.innerHTML = `
           <div class="card text text-center">
               <div>
@@ -50,14 +50,22 @@ const detalic = ()=> {
    
 const displayInfro = infroData => {
     const phoneDatlic = document.getElementById('phone-datlice')
+   
     const div = document.createElement('div');
+    document.getElementById('phone-datlice').innerHTML = '';
+    // console.log(infroData.others)
     div.innerHTML = `
     <div class="card text-center">
     <div>
         <img class="mt-3 w-50" src="${infroData.image}" alt="">
     </div>
-       <h2>Name:</h2>
-       <h2>Brand Name:</h2>
+       <h2>Name:${infroData.name}</h2>
+       <h3>Release Date:${infroData.releaseDate}</h3>
+       <h4>Storage:${infroData.mainFeatures. storage}</h4>
+       <h4>Memory:${infroData.mainFeatures. memory}</h4>
+       <h5>Bluetooth:${infroData.others.Bluetooth}</h5>
+       <h5>USB:${infroData.others.USB}</h5>
+      
    <div>
       <button class="btn btn-success mb-4">All Data</button>
     </div>
