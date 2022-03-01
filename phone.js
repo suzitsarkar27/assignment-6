@@ -6,6 +6,7 @@ const phoneEvent = () => {
     document.getElementById('container').innerHTML = '';
     document.getElementById('error-massage').innerHTML = '';
     document.getElementById('error-massage').innerHTML = '';
+    document.getElementById('phone-datlice').innerHTML = '';
   
     if (inputValue == "" || inputValue == 0) {
       const errpr=  document.getElementById('error-massage').innerHTML = `
