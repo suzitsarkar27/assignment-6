@@ -4,12 +4,23 @@ const phoneEvent = () => {
     const input = document.getElementById('input-value');
     const inputValue = input.value;
     document.getElementById('container').innerHTML = '';
+    document.getElementById('error-massage').innerHTML = '';
+    document.getElementById('error-massage').innerHTML = '';
   
-    if (inputValue=="") {
-        document.getElementById('error-massage').innerHTML = `
+    if (inputValue == "" || inputValue == 0) {
+      const errpr=  document.getElementById('error-massage').innerHTML = `
         <h2>Sorry not found of infro plasse try agine</h2>
        `
-    }else {
+        input.value = "";
+        errpr.innerHTML = '';
+
+    } else if (inputValue>20) {
+        document.getElementById('error-massage').innerHTML = `
+        <h2> Sorry not a data trye aging</h2>
+       `
+        input.value = "";
+    }
+    else {
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
         fetch(url)
         .then(res => res.json())
@@ -21,8 +32,9 @@ const phoneEvent = () => {
 
 const displayPhone = phones => {
     const container = document.getElementById('container');
-    phones.forEach(element => {
-        // console.log(element.phone_name)
+    const phone = phones.slice(0, 20);
+    phone.forEach(element => {
+        // console.log(element)
         const div = document.createElement('div');
         div.className=('col-col-md-6 col-lg-4 mb-3 p-5 m-auto')
         div.innerHTML = `
@@ -33,7 +45,7 @@ const displayPhone = phones => {
                  <h2>Name:${element.phone_name}</h2>
                  <h2>Brand Name:${element.brand}</h2>
              <div>
-                <button onclick="detalic()" class="btn btn-success mb-4">Datlice</button>
+                <button onclick="detalic('${element.slug}')" class="btn btn-success mb-4">Datlice</button>
               </div>
          </div>
     
@@ -42,18 +54,17 @@ const displayPhone = phones => {
     });
 }
  
-const detalic = ()=> {
-    fetch(' https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089')
+const detalic = (phoneDatlic) => {
+    const url = (`https://openapi.programming-hero.com/api/phone/${phoneDatlic}`)
+     fetch(url)
     .then(res => res.json())
     .then(data=>displayInfro(data.data))
-}
-   
+}  
 const displayInfro = infroData => {
     const phoneDatlic = document.getElementById('phone-datlice')
    
     const div = document.createElement('div');
     document.getElementById('phone-datlice').innerHTML = '';
-    // console.log(infroData.others)
     div.innerHTML = `
     <div class="card text-center">
     <div>
@@ -61,10 +72,12 @@ const displayInfro = infroData => {
     </div>
        <h2>Name:${infroData.name}</h2>
        <h3>Release Date:${infroData.releaseDate}</h3>
-       <h4>Storage:${infroData.mainFeatures. storage}</h4>
        <h4>Memory:${infroData.mainFeatures. memory}</h4>
        <h5>Bluetooth:${infroData.others.Bluetooth}</h5>
        <h5>USB:${infroData.others.USB}</h5>
+       <h5>Sensors:${infroData.mainFeatures.sensors}</h5>
+       
+   
       
    <div>
       <button class="btn btn-success mb-4">All Data</button>
