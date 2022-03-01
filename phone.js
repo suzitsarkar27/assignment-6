@@ -82,6 +82,7 @@ const displayInfro = infroData => {
        <h4>Memory:${infroData.mainFeatures. memory}</h4>
        <h5>Bluetooth:${infroData.others.Bluetooth}</h5>
        <h5>USB:${infroData.others.USB}</h5>
+       <h5>WLAN:${infroData.others.WLAN}</h5>
        <h5>Sensors:${infroData.mainFeatures.sensors}</h5>
        
    
