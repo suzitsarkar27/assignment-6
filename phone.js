@@ -32,6 +32,13 @@ const phoneEvent = () => {
 
 const displayPhone = phones => {
     const container = document.getElementById('container');
+    if (phones.length == 0) {
+        const errpr=  document.getElementById('error-massage').innerHTML = `
+        <h2>Sorry not found of infro plasse try agine</h2>
+       `
+        input.value = "";
+        errpr.innerHTML = '';
+    }
     const phone = phones.slice(0, 20);
     phone.forEach(element => {
         // console.log(element)
